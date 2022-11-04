@@ -11,6 +11,7 @@ Projeto final de React serratec
 - [Sobre](#e-commerce-react)
 - [Tecnologias utilizadas](#-tecnologias-utilizadas)
 - [Construído com](#%EF%B8%8F-construído-com)
+- [Como executar o projeto](#-como-executar-o-projeto)
 - [Autores](#%EF%B8%8F-autores)
 
 --- 
@@ -22,6 +23,12 @@ O projeto está desenvolvido utilizando as seguintes tecnologias:
 - JavaScript
 - React
 - Vite
+--- 
+
+## ⌨ Como executar o projeto
+
+Gostaria de acessar e testar a aplicação ? basta clicar [aqui](https://main--top-secret-react.netlify.app/)
+
 --- 
 
 ## 🛠️ Construído com
