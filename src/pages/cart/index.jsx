@@ -67,6 +67,7 @@ export const Cart = () => {
                                 name="quantity"
                                 defaultValue="1"
                                 type="number"
+                                disabled
                                 className="form-control form-control-sm"
                               />
 

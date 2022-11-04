@@ -7,7 +7,7 @@ import { CartContext } from "../../context/cart";
 import { ProdutoAPI } from "../../hooks/produtoAPI";
 import { NotFound } from "../notFound";
 import "./index.css";
-import { ProdutoImg } from "./style";
+import { ProdutoImg } from "./styles";
 
 export const Produto = () => {
   const { handleAddItemToCart } = useContext(CartContext);
