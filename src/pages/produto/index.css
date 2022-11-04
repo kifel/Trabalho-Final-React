@@ -1,0 +1,14 @@
+.color-cart {
+  color: var(--white);
+  background: var(--green-500);
+  transition: background 0.2s;
+}
+
+.color-cart:hover {
+  color: var(--white);
+  background: var(--green-300);
+}
+
+.content {
+  margin-bottom: .42rem;
+}
