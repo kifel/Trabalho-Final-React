@@ -1,0 +1,25 @@
+@media screen and (max-width: 992px) {
+  .card-item .card-title {
+    height: 5rem;
+  }
+
+  .card-item img {
+    height: 13rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card-item {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .card-item {
+    margin-left: 3rem;
+  }
+
+  .card-item img {
+    height: 8rem;
+  }
+}
