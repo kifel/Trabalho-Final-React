@@ -9,18 +9,16 @@ import { Produtos } from "./pages/produtos";
 
 function App() {
   return (
-    <>
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} exact={true} />
-          <Route path="/produtos" element={<Produtos />} exact={true} />
-          <Route path="/produtos/:id" element={<Produto />} exact={true} />
-          <Route path="/cart" element={<Cart />} exact={true} />
-          <Route path="*" element={<NotFound />}/>
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} exact={true} />
+        <Route path="/produtos" element={<Produtos />} exact={true} />
+        <Route path="/produtos/:id" element={<Produto />} exact={true} />
+        <Route path="/cart" element={<Cart />} exact={true} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Router>
   );
 }
 
