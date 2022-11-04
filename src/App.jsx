@@ -3,6 +3,7 @@ import "./App.css";
 import { NavBar } from "./components/navbar";
 import { Cart } from "./pages/Cart";
 import { Home } from "./pages/home";
+import { NotFound } from "./pages/notFound";
 import { Produto } from "./pages/produto";
 import { Produtos } from "./pages/produtos";
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/produtos" element={<Produtos />} exact={true} />
           <Route path="/produtos/:id" element={<Produto />} exact={true} />
           <Route path="/cart" element={<Cart />} exact={true} />
+          <Route path="*" element={<NotFound />}/>
         </Routes>
       </Router>
     </>
