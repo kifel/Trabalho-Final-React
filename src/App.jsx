@@ -16,7 +16,7 @@ function App() {
         <Route path="/produtos" element={<Produtos />} exact={true} />
         <Route path="/produtos/:id" element={<Produto />} exact={true} />
         <Route path="/cart" element={<Cart />} exact={true} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<NotFound />} />
       </Routes>
     </Router>
   );
