@@ -27,7 +27,7 @@ O projeto está desenvolvido utilizando as seguintes tecnologias:
 
 ## ⌨ Como executar o projeto
 
-Gostaria de acessar e testar a aplicação ? basta clicar [aqui](https://main--top-secret-react.netlify.app/)
+Gostaria de acessar e testar a aplicação ? basta clicar [aqui](https://top-secret-react.netlify.app/)
 
 --- 
 
