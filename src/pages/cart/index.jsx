@@ -86,7 +86,7 @@ export const Cart = () => {
                               </button>
                             </div>
                             <div className="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                              <h6 className="mb-0">R$ {subTotal}.00</h6>
+                              <h6 className="mb-0">R$ {subTotal.toFixed(2)}</h6>
                             </div>
                             <div className="col-md-1 col-lg-1 col-xl-1 text-end">
                               <button
@@ -142,7 +142,7 @@ export const Cart = () => {
 
                       <div className="d-flex justify-content-between mb-5">
                         <h5 className="text-uppercase">Preço total</h5>
-                        <h5>R$ {totalPrice}</h5>
+                        <h5>R$ {totalPrice.toFixed(2)}</h5>
                       </div>
 
                       <button
