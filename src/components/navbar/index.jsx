@@ -37,13 +37,18 @@ export const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/about">
+                <NavLink className="nav-link text-white" to="/sobre">
                   Sobre
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/contato">
+                <NavLink className="nav-link text-white" to="/faleconosco">
                   Fale conosco
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link text-white" to="/gerenciar">
+                  Gerenciar
                 </NavLink>
               </li>
             </ul>
