@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import { Image, Section } from "./styles";
 
 export const Register = () => {
-  const [error, setError] = useState(null);
-  const [tentativa, setTentativa] = useState(1);
-  const [on, setOn] = useState(false);
+  const [errorS, setErrorS] = useState(null);
+  const [attempt, setAttempt] = useState(1);
+  const [apiResponse, setApiResponse] = useState(undefined);
   const [cpf, setCpf] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
   const [email, setEmail] = useState("");
@@ -40,21 +40,30 @@ export const Register = () => {
         nome: nome,
         usuario: usuario,
       })
+      .then((response) => {
+        setApiResponse(response);
+      })
       .catch((error) => {
-        if (tentativa > 1 && error === null) {
-          setError("Logado");
-        } else {
-          setError(error);
-        }
+        setErrorS(error);
       });
-    setTentativa(tentativa + 1);
-    console.log(error);
-    if (error === null) {
-      setOn(true);
-    } else {
-      setOn(false);
-    }
+
+    setAttempt(attempt + 1);
   };
+
+  useEffect(() => {
+    if (errorS?.response.data !== undefined) {
+      if (errorS?.response.data.cpf !== undefined) {
+        setApiResponse(undefined);
+        setErrorS(null);
+      }
+      if (errorS?.response.data.dataNascimento !== undefined) {
+        setApiResponse(undefined);
+        setErrorS(null);
+      }
+    }
+    console.log(errorS);
+    console.log(apiResponse);
+  }, [attempt]);
 
   return (
     <Section className="h-100 h-custom">
@@ -310,38 +319,25 @@ export const Register = () => {
                   </button>
                 </form>
                 {(() => {
-                  if (error?.response.status !== 200 && error !== null) {
+                  if (errorS?.response.data.cpf !== undefined) {
                     return (
-                      <>
-                        <div className="alert alert-danger mt-2" role="alert">
-                          {(() => {
-                            if (error?.response.data.cpf !== undefined) {
-                              return (
-                                <>
-                                  Erro ao cadastrar, {error?.response.data.cpf}{" "}
-                                  aaaa
-                                </>
-                              );
-                            }
-                            if (
-                              error?.response.data.dataNascimento !== undefined
-                            ) {
-                              return (
-                                <>
-                                  Erro ao cadastrar,{" "}
-                                  {error?.response.data.dataNascimento}
-                                </>
-                              );
-                            }
-                          })()}
-                        </div>
-                      </>
+                      <div className="alert alert-danger mt-2" role="alert">
+                        Erro ao cadastrar, {errorS?.response.data.cpf} aaaa
+                      </div>
                     );
                   }
-                  if (error == null && on == true) {
+                  if (errorS?.response.data.dataNascimento !== undefined) {
+                    return (
+                      <div className="alert alert-danger mt-2" role="alert">
+                        Erro ao cadastrar,{" "}
+                        {errorS?.response.data.dataNascimento}
+                      </div>
+                    );
+                  }
+                  if (apiResponse?.status === 201) {
                     return (
                       <>
-                        <div className="alert alert-primary" role="alert">
+                        <div className="alert alert-primary mt-2" role="alert">
                           Conta criada com sucesso
                         </div>
                       </>
