@@ -18,7 +18,8 @@ export const Register = () => {
   const [numero, setNumero] = useState("");
   const [rua, setRua] = useState("");
 
-  const cadastrar = () => {
+  const cadastrar = (e) => {
+    e.preventDefault()
     axios
       .post("https://kifel.herokuapp.com/cliente", {
         "cpf": cpf,
@@ -58,7 +59,7 @@ export const Register = () => {
                   Informe seus dados
                 </h3>
 
-                <form className="px-md-2" onSubmit={void(0)}>
+                <form className="px-md-2" onSubmit={(e) => cadastrar(e)}>
                   <div className="form-outline mb-4">
                     <input
                       type="text"
@@ -273,7 +274,6 @@ export const Register = () => {
                   <button
                     type="submit"
                     className="btn btn-success btn-lg mb-1"
-                    onClick={(e) => cadastrar()} 
                   >
                     Submit
                   </button>
