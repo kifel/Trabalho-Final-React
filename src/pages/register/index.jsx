@@ -5,6 +5,8 @@ import { Image, Section } from "./styles";
 
 export const Register = () => {
   const [error, setError] = useState(null);
+  const [tentativa, setTentativa] = useState(1);
+  const [on, setOn] = useState(false);
   const [cpf, setCpf] = useState("");
   const [dataNascimento, setDataNascimento] = useState("");
   const [email, setEmail] = useState("");
@@ -19,28 +21,39 @@ export const Register = () => {
   const [rua, setRua] = useState("");
 
   const cadastrar = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
     axios
       .post("https://kifel.herokuapp.com/cliente", {
-        "cpf": cpf,
-        "dataNascimento": `${dataNascimento}T18:46:19Z`,
-        "email": email,
-        "endereco": {
-          "cep": cep,
-          "bairro": bairro,
-          "cidade": cidade,
-          "complemento": complemento,
-          "estado": estado,
-          "numero": numero,
-          "rua": rua,
+        cpf: cpf,
+        dataNascimento: `${dataNascimento}T18:46:19Z`,
+        email: email,
+        endereco: {
+          cep: cep,
+          bairro: bairro,
+          cidade: cidade,
+          complemento: complemento,
+          estado: estado,
+          numero: numero,
+          rua: rua,
         },
-        "nome": nome,
-        "usuario": usuario
+        nome: nome,
+        usuario: usuario,
       })
       .catch((error) => {
-        console.log(error)
-        setError(error.response.status);
+        if (tentativa > 1 && error === null) {
+          setError("Logado");
+        } else {
+          setError(error);
+        }
       });
+    setTentativa(tentativa + 1);
+    console.log(error);
+    if (error === null) {
+      setOn(true);
+    } else {
+      setOn(false);
+    }
   };
 
   return (
@@ -61,53 +74,66 @@ export const Register = () => {
 
                 <form className="px-md-2" onSubmit={(e) => cadastrar(e)}>
                   <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="form3Example1q">
+                      Nome
+                    </label>
+
                     <input
                       type="text"
                       id="form3Example1q"
                       className="form-control"
                       value={nome}
-                      minLength="10"
+                      minLength="5"
+                      maxLength="60"
                       required
                       onChange={(e) => setNome(e.target.value)}
                     />
-                    <label className="form-label" htmlFor="form3Example1q">
-                      Nome
-                    </label>
                   </div>
 
                   <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="form3Example1q">
+                      Cpf
+                    </label>
+
                     <input
                       type="text"
                       id="form3Example1q"
                       className="form-control"
                       value={cpf}
                       minLength="11"
+                      maxLength="11"
                       onChange={(e) => setCpf(e.target.value)}
                       required
                     />
-                    <label className="form-label" htmlFor="form3Example1q">
-                      Cpf
-                    </label>
                   </div>
 
-                  <div className="form-outline mb-4">
-                    <input
-                      type="text"
-                      minLength="6"
-                      required
-                      id="form3Example1q"
-                      className="form-control"
-                      value={usuario}
-                      onChange={(e) => setUsuario(e.target.value)}
-                    />
+                  <div className="form-outline">
                     <label className="form-label" htmlFor="form3Example1q">
                       Usuário
                     </label>
+
+                    <input
+                      type="text"
+                      minLength="6"
+                      maxLength="15"
+                      required
+                      id="form3Example1q"
+                      className="form-control mb-4"
+                      value={usuario}
+                      onChange={(e) => setUsuario(e.target.value)}
+                    />
                   </div>
 
                   <div className="row">
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Data de Nascimento
+                        </label>
+
                         <input
                           type="date"
                           className="form-control"
@@ -116,36 +142,39 @@ export const Register = () => {
                           onChange={(e) => setDataNascimento(e.target.value)}
                           required
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Data de Nascimento
-                        </label>
                       </div>
                     </div>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="exampleDatepicker1"
-                          minLength="6"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          required
-                        />
                         <label
                           htmlFor="exampleDatepicker1"
                           className="form-label"
                         >
                           Email
                         </label>
+
+                        <input
+                          type="email"
+                          className="form-control"
+                          id="exampleDatepicker1"
+                          minLength="4"
+                          maxLength="30"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
                       </div>
                     </div>
-                    <p className="text-center">Endereço</p>
+                    <p className="text-center fw-bold mt-2 mb-5">Endereço</p>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Cep
+                        </label>
+
                         <input
                           type="text"
                           className="form-control"
@@ -154,17 +183,19 @@ export const Register = () => {
                           onChange={(e) => setCep(e.target.value)}
                           required
                           minLength="8"
+                          maxLength="8"
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Cep
-                        </label>
                       </div>
                     </div>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Bairro
+                        </label>
+
                         <input
                           type="text"
                           className="form-control"
@@ -173,17 +204,19 @@ export const Register = () => {
                           onChange={(e) => setBairro(e.target.value)}
                           required
                           minLength="6"
+                          maxLength="40"
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Bairro
-                        </label>
                       </div>
                     </div>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Cidade
+                        </label>
+
                         <input
                           type="text"
                           className="form-control"
@@ -192,17 +225,19 @@ export const Register = () => {
                           onChange={(e) => setCidade(e.target.value)}
                           required
                           minLength="6"
+                          maxLength="40"
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Cidade
-                        </label>
                       </div>
                     </div>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Estado
+                        </label>
+
                         <input
                           type="text"
                           className="form-control"
@@ -210,19 +245,20 @@ export const Register = () => {
                           value={estado}
                           onChange={(e) => setEstado(e.target.value)}
                           required
-                        />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
                           minLength="2"
                           maxLength="2"
-                        >
-                          Estado
-                        </label>
+                        />
                       </div>
                     </div>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Rua
+                        </label>
+
                         <input
                           type="text"
                           className="form-control"
@@ -230,18 +266,20 @@ export const Register = () => {
                           value={rua}
                           onChange={(e) => setRua(e.target.value)}
                           required
-                          minLength="6"
+                          minLength="4"
+                          maxLength="40"
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Rua
-                        </label>
                       </div>
                     </div>
                     <div className="col-md-6 mb-4">
                       <div className="form-outline datepicker">
+                        <label
+                          htmlFor="exampleDatepicker1"
+                          className="form-label"
+                        >
+                          Numero
+                        </label>
+
                         <input
                           type="text"
                           className="form-control"
@@ -249,16 +287,15 @@ export const Register = () => {
                           value={numero}
                           onChange={(e) => setNumero(e.target.value)}
                           required
+                          minLength="1"
+                          maxLength="20"
                         />
-                        <label
-                          htmlFor="exampleDatepicker1"
-                          className="form-label"
-                        >
-                          Numero
-                        </label>
                       </div>
                     </div>
                     <div className="form-outline mb-4">
+                      <label className="form-label" htmlFor="form3Example1q">
+                        Complemento
+                      </label>
                       <input
                         type="text"
                         id="form3Example1q"
@@ -266,28 +303,42 @@ export const Register = () => {
                         value={complemento}
                         onChange={(e) => setComplemento(e.target.value)}
                       />
-                      <label className="form-label" htmlFor="form3Example1q">
-                        Complemento
-                      </label>
                     </div>
                   </div>
-                  <button
-                    type="submit"
-                    className="btn btn-success btn-lg mb-1"
-                  >
+                  <button type="submit" className="btn btn-success btn-lg mb-1">
                     Submit
                   </button>
                 </form>
                 {(() => {
-                  if (error !== 200 && error !== null) {
+                  if (error?.response.status !== 200 && error !== null) {
                     return (
                       <>
                         <div className="alert alert-danger mt-2" role="alert">
-                          Erro ao cadastrar
+                          {(() => {
+                            if (error?.response.data.cpf !== undefined) {
+                              return (
+                                <>
+                                  Erro ao cadastrar, {error?.response.data.cpf}{" "}
+                                  aaaa
+                                </>
+                              );
+                            }
+                            if (
+                              error?.response.data.dataNascimento !== undefined
+                            ) {
+                              return (
+                                <>
+                                  Erro ao cadastrar,{" "}
+                                  {error?.response.data.dataNascimento}
+                                </>
+                              );
+                            }
+                          })()}
                         </div>
                       </>
                     );
-                  } else if (error !== null) {
+                  }
+                  if (error == null && on == true) {
                     return (
                       <>
                         <div className="alert alert-primary" role="alert">
