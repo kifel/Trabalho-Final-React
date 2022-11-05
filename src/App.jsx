@@ -8,6 +8,7 @@ import { NotFound } from "./pages/notFound";
 import { Produto } from "./pages/produto";
 import { Produtos } from "./pages/produtos";
 import { Register } from "./pages/register";
+import { FaleConosco } from "./pages/faleConosco/index1";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart" element={<Cart />} exact={true} />
         <Route path="/login" element={<Login />} exact={true} />
         <Route path="/register" element={<Register />} exact={true} />
+         <Route path="/faleConosco" element={<FaleConosco />} exact={true} /> 
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
