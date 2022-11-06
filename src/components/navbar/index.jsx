@@ -42,12 +42,12 @@ export const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/faleconosco">
+                <NavLink className="nav-link text-white" to="/fale-conosco">
                   Fale conosco
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link text-white" to="/gerenciar">
+                <NavLink className="nav-link text-white" to="/admin">
                   Gerenciar
                 </NavLink>
               </li>

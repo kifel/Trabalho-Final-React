@@ -322,7 +322,7 @@ export const Register = () => {
                   if (errorS?.response.data.cpf !== undefined) {
                     return (
                       <div className="alert alert-danger mt-2" role="alert">
-                        Erro ao cadastrar, {errorS?.response.data.cpf} aaaa
+                        Erro ao cadastrar, {errorS?.response.data.cpf}
                       </div>
                     );
                   }
