@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
 import { ClienteAPI } from "../../../hooks/clienteAPI";
 import { NotFound } from "../../notFound";
-import { PencilButton, TrashButton } from "./styles";
+import { NavLink, TrashButton } from "./styles";
 
 export const Cliente = () => {
   const { clientes, isFetching, error } = ClienteAPI();
-  const [deleteC, setDeleteC] = useState(0);
+  const [clienteResponse, setClienteResponse] = useState(clientes);
   const [errorS, setErrorS] = useState(null);
   const [response, setResponse] = useState(null);
 
@@ -18,10 +18,10 @@ export const Cliente = () => {
         setResponse(response.status);
       })
       .catch((error) => {
-        setErrorS(error);
+        setErrorS(error)
       });
 
-    setDeleteC(deleteC + 1);
+    window.location.reload();
   };
 
   const Loading = () => {
@@ -102,9 +102,9 @@ export const Cliente = () => {
                   <p className="card-text lead">
                     Email: {clt.email.substring(0, 12)}
                   </p>
-                  <PencilButton className="btn">
+                  <NavLink className="btn" to={`/clientes-gen/editar/${clt.id}`}>
                     <i className="fa fa-pencil me-5"></i>
-                  </PencilButton>
+                  </NavLink>
                   <TrashButton
                     className="btn"
                     onClick={() => deletarCliente(clt.id)}
