@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
-import { ClienteAPI } from "../../../hooks/clienteAPI";
+import { APIResponse } from "../../../hooks/APIResponse";
 import { NotFound } from "../../notFound";
 import { NavLink, TrashButton } from "./styles";
 
 export const Cliente = () => {
-  const { clientes, isFetching, error } = ClienteAPI();
-  const [clienteResponse, setClienteResponse] = useState(clientes);
+  const { data, isFetching, error } = APIResponse("/cliente");
   const [errorS, setErrorS] = useState(null);
   const [response, setResponse] = useState(null);
 
@@ -91,7 +90,7 @@ export const Cliente = () => {
   const ShowClients = () => {
     return (
       <>
-        {clientes?.map((clt) => {
+        {data?.map((clt) => {
           return (
             <div className="col-md-3 mb-4" key={clt.id}>
               <div className="card text-center card-item" width="18rem">

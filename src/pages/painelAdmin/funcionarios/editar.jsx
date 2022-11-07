@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { FuncionarioAPI } from "../../../hooks/funcionarioAPI";
+import { APIResponse } from "../../../hooks/APIResponse";
 
 export const FuncionariosEditar = () => {
   const { id } = useParams();
-  const { funcionario } = FuncionarioAPI(`/${id}`);
+  const { data } = APIResponse(`/funcionario/${id}`);
   const [errorS, setErrorS] = useState(null);
   const [apiResponse, setApiResponse] = useState(undefined);
   const [nome, setNome] = useState("");
@@ -15,7 +15,7 @@ export const FuncionariosEditar = () => {
 
     axios
       .put(`https://kifel.herokuapp.com/funcionario/${id}`, {
-        cpf: funcionario.cpf,
+        cpf: data.cpf,
         nome: nome,
       })
       .then((response) => {

@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
-import { FuncionarioAPI } from "../../../hooks/funcionarioAPI";
+import { APIResponse } from "../../../hooks/APIResponse";
 import { NotFound } from "../../notFound";
 import { NavLink, TrashButton } from "../cliente/styles";
 
 export const Funcionarios = () => {
-  const { funcionario, isFetching, error } = FuncionarioAPI();
-  const [funcionarioResponse, setFuncionarioResponse] = useState(funcionario);
+  const { data, isFetching, error } = APIResponse("/funcionario");
   const [errorS, setErrorS] = useState(null);
   const [response, setResponse] = useState(null);
 
@@ -91,7 +90,7 @@ export const Funcionarios = () => {
   const ShowClients = () => {
     return (
       <>
-        {funcionario?.map((func) => {
+        {data?.map((func) => {
           return (
             <div className="col-md-3 mb-4" key={func.id}>
               <div className="card text-center card-item" width="18rem">

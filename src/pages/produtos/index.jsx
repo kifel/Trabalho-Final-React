@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ContentLoader from "react-content-loader";
 import { NavLink, useLocation } from "react-router-dom";
 import { FooterPage } from "../../components/footer";
-import { ProdutoAPI } from "../../hooks/produtoAPI";
+import { APIResponse } from "../../hooks/APIResponse";
 import { NotFound } from "../notFound";
 import "./index.css";
 import { ImagemProduto } from "./styles";
@@ -12,7 +12,7 @@ export const Produtos = () => {
   const [url, setUrl] = useState("");
   const location = useLocation();
   const [ProdutoFiltrado, setProdutoFiltrado] = useState("");
-  const { produtos, isFetching, error } = ProdutoAPI();
+  const { data, isFetching, error } = APIResponse("/produto");
 
   useEffect(() => {
     setUrl(urlLink(location.pathname));
@@ -85,7 +85,7 @@ export const Produtos = () => {
   };
 
   const ShowProducts = () => {
-    const produtosFiltrados = produtos?.filter((produto) =>
+    const produtosFiltrados = data?.filter((produto) =>
       produto.nome.toUpperCase().includes(ProdutoFiltrado.toUpperCase())
     );
     return (
