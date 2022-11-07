@@ -1,19 +1,19 @@
 import axios from "axios";
 import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
-import { ClienteAPI } from "../../../hooks/clienteAPI";
+import { FuncionarioAPI } from "../../../hooks/funcionarioAPI";
 import { NotFound } from "../../notFound";
-import { NavLink, TrashButton } from "./styles";
+import { NavLink, TrashButton } from "../cliente/styles";
 
-export const Cliente = () => {
-  const { clientes, isFetching, error } = ClienteAPI();
-  const [clienteResponse, setClienteResponse] = useState(clientes);
+export const Funcionarios = () => {
+  const { funcionario, isFetching, error } = FuncionarioAPI();
+  const [funcionarioResponse, setFuncionarioResponse] = useState(funcionario);
   const [errorS, setErrorS] = useState(null);
   const [response, setResponse] = useState(null);
 
   const deletarCliente = (id) => {
     axios
-      .delete(`https://kifel.herokuapp.com/cliente/${id}`)
+      .delete(`https://kifel.herokuapp.com/funcionario/${id}`)
       .then((response) => {
         setResponse(response.status);
       })
@@ -21,13 +21,13 @@ export const Cliente = () => {
         setErrorS(error);
       })
       .finally(() => {
-        refresh();
+        refresh()
       });
   };
 
   const refresh = () => {
-    window.location.reload();
-  };
+      window.location.reload();
+  }
 
   const Loading = () => {
     return (
@@ -91,33 +91,25 @@ export const Cliente = () => {
   const ShowClients = () => {
     return (
       <>
-        {clientes?.map((clt) => {
+        {funcionario?.map((func) => {
           return (
-            <div className="col-md-3 mb-4" key={clt.id}>
+            <div className="col-md-3 mb-4" key={func.id}>
               <div className="card text-center card-item" width="18rem">
                 <div className="card-body">
-                  <p className="card-text lead">ID: {clt.id}</p>
+                  <p className="card-text lead">ID: {func.id}</p>
                   <h5 className="card-title text-dark mb-0">
-                    Nome: {clt.nome.substring(0, 8)}...
+                    Nome: {func.nome.substring(0, 8)}...
                   </h5>
-                  <p className="card-text lead">
-                    User: {clt.usuario.substring(0, 5)}...
-                  </p>
-                  <p className="card-text lead">
-                    Cpf: {clt.cpf.substring(0, 8)}...
-                  </p>
-                  <p className="card-text lead">
-                    Email: {clt.email.substring(0, 8)}...
-                  </p>
+                  <p className="card-text lead">Cpf: {func.cpf}</p>
                   <NavLink
                     className="btn"
-                    to={`/clientes-gen/editar/${clt.id}`}
+                    to={`/funcionarios-gen/editar/${func.id}`}
                   >
                     <i className="fa fa-pencil me-5"></i>
                   </NavLink>
                   <TrashButton
                     className="btn"
-                    onClick={() => deletarCliente(clt.id)}
+                    onClick={() => deletarCliente(func.id)}
                   >
                     <i className="fa fa-trash"></i>
                   </TrashButton>
@@ -134,9 +126,23 @@ export const Cliente = () => {
     <>
       <div className="container">
         <div className="row justify-content-center mt-5">
-          <NavLink to="/admin" className="text-body">
-            <i className="fa fa-arrow-left me-2 mb-5"></i>Voltar
-          </NavLink>
+          <div className="container mb-5">
+            <div className="row">
+              <div className="col-6">
+                <NavLink to="/admin" className="text-body btn">
+                  <i className="fa fa-arrow-left me-2"></i>Voltar
+                </NavLink>
+              </div>
+              <div className="col-6 d-flex flex-row-reverse">
+                <NavLink
+                  to="/funcionarios-gen/cadastrar"
+                  className="text-white btn btn-success"
+                >
+                  Cadastrar um novo<i className="fa fa-plus ms-2"></i>
+                </NavLink>
+              </div>
+            </div>
+          </div>
           {(() => {
             if (isFetching) {
               return <Loading />;

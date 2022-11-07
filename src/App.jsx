@@ -9,6 +9,9 @@ import { NotFound } from "./pages/notFound";
 import { PainelAdmin } from "./pages/painelAdmin";
 import { Cliente } from "./pages/painelAdmin/cliente";
 import { ClienteEditar } from "./pages/painelAdmin/cliente/editar";
+import { Funcionarios } from "./pages/painelAdmin/funcionarios";
+import { FuncionariosEditar } from "./pages/painelAdmin/funcionarios/editar";
+import { FuncionariosInserir } from "./pages/painelAdmin/funcionarios/inserir";
 import { Produto } from "./pages/produto";
 import { Produtos } from "./pages/produtos";
 import { Register } from "./pages/register";
@@ -27,6 +30,9 @@ function App() {
         <Route path="/fale-conosco" element={<FaleConosco />} exact={true} />
         <Route path="/admin" element={<PainelAdmin />} exact={true} />
         <Route path="/clientes-gen" element={<Cliente />} exact={true}/>
+        <Route path="/funcionarios-gen" element={<Funcionarios />} exact={true} />
+        <Route path="/funcionarios-gen/cadastrar" element={<FuncionariosInserir />} exact={true} />
+        <Route path="/funcionarios-gen/editar/:id" element={<FuncionariosEditar />} exact={true} />
         <Route path="/clientes-gen/editar/:id" element={<ClienteEditar />} exact={true} />
         <Route path="*" element={<NotFound />} />
       </Routes>
