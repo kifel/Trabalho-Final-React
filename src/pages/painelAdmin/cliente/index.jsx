@@ -18,7 +18,7 @@ export const Cliente = () => {
         setResponse(response.status);
       })
       .catch((error) => {
-        setErrorS(error)
+        setErrorS(error);
       });
 
     window.location.reload();
@@ -102,7 +102,10 @@ export const Cliente = () => {
                   <p className="card-text lead">
                     Email: {clt.email.substring(0, 12)}
                   </p>
-                  <NavLink className="btn" to={`/clientes-gen/editar/${clt.id}`}>
+                  <NavLink
+                    className="btn"
+                    to={`/clientes-gen/editar/${clt.id}`}
+                  >
                     <i className="fa fa-pencil me-5"></i>
                   </NavLink>
                   <TrashButton
@@ -124,6 +127,9 @@ export const Cliente = () => {
     <>
       <div className="container">
         <div className="row justify-content-center mt-5">
+          <NavLink to="/admin" className="text-body">
+            <i className="fa fa-arrow-left me-2 mb-5"></i>Voltar
+          </NavLink>
           {(() => {
             if (isFetching) {
               return <Loading />;

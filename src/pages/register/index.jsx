@@ -61,8 +61,6 @@ export const Register = () => {
         setErrorS(null);
       }
     }
-    console.log(errorS);
-    console.log(apiResponse);
   }, [attempt]);
 
   return (

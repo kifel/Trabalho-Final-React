@@ -8,7 +8,6 @@ export const ClienteEditar = () => {
   const { clientes } = ClienteAPI(`/${id}`);
   const [errorS, setErrorS] = useState(null);
   const [apiResponse, setApiResponse] = useState(undefined);
-  const [dataNascimento, setDataNascimento] = useState("");
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
   const [usuario, setUsuario] = useState("");
@@ -41,11 +40,9 @@ export const ClienteEditar = () => {
         usuario: usuario,
       })
       .then((response) => {
-        console.log(response);
         setApiResponse(response);
       })
       .catch((error) => {
-        console.log(error);
         setErrorS(error);
       });
 
