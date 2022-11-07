@@ -46,7 +46,6 @@ export const ClienteEditar = () => {
         setErrorS(error);
       });
 
-    setAttempt(attempt + 1);
   };
 
   return (

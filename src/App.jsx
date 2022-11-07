@@ -15,6 +15,7 @@ import { ClienteEditar } from "./pages/painelAdmin/cliente/editar";
 import { Funcionarios } from "./pages/painelAdmin/funcionarios";
 import { FuncionariosEditar } from "./pages/painelAdmin/funcionarios/editar";
 import { FuncionariosInserir } from "./pages/painelAdmin/funcionarios/inserir";
+import { PedidoGen } from "./pages/painelAdmin/pedido";
 import { ProdutoGen } from "./pages/painelAdmin/produto";
 import { ProdutoGenEditar } from "./pages/painelAdmin/produto/editar";
 import { ProdutoGenInserir } from "./pages/painelAdmin/produto/inserir";
@@ -46,6 +47,7 @@ function App() {
         <Route path="/produtos-gen" element={<ProdutoGen />} exact={true} />
         <Route path="/produtos-gen/cadastrar" element={<ProdutoGenInserir />} exact={true} />
         <Route path="/produtos-gen/editar/:id" element={<ProdutoGenEditar />} exact={true} />
+        <Route path="/pedidos-gen" element={<PedidoGen />} exact={true} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
