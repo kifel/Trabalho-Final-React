@@ -11,6 +11,7 @@ import { Cliente } from "./pages/painelAdmin/cliente";
 import { Produto } from "./pages/produto";
 import { Produtos } from "./pages/produtos";
 import { Register } from "./pages/register";
+import { Sobre } from "./pages/sobre";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/fale-conosco" element={<FaleConosco />} exact={true} />
         <Route path="/admin" element={<PainelAdmin />} exact={true} />
         <Route path="/clientes-gen" element={<Cliente />} exact={true}/>
+        <Route path="/sobre" element={<Sobre />} exact={true}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
