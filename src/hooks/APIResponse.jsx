@@ -2,12 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const api = axios.create({
-  baseURL: "https://kifel.herokuapp.com/produto",
+  baseURL: "https://kifel.herokuapp.com",
 });
 
-export function ProdutoAPI(url) {
+export function APIResponse(url) {
   const [isFetching, setIsFetching] = useState(true);
-  const [produtos, setProdutos] = useState([]);
+  const [data, setProdutos] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -24,5 +24,5 @@ export function ProdutoAPI(url) {
       });
   }, []);
 
-  return { produtos, isFetching, error };
+  return { data, isFetching, error };
 }

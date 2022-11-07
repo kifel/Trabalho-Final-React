@@ -1,28 +1,32 @@
-import "bootstrap/dist/css/bootstrap.css";
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import ContentLoader from "react-content-loader";
-import { NavLink, useLocation } from "react-router-dom";
-import { FooterPage } from "../../components/footer";
-import { APIResponse } from "../../hooks/APIResponse";
-import { NotFound } from "../notFound";
-import "./index.css";
-import { ImagemProduto } from "./styles";
+import { APIResponse } from "../../../hooks/APIResponse";
+import { NotFound } from "../../notFound";
+import { NavLink } from "../cliente/styles";
 
-export const Produtos = () => {
-  const [url, setUrl] = useState("");
-  const location = useLocation();
-  const [ProdutoFiltrado, setProdutoFiltrado] = useState("");
-  const { data, isFetching, error } = APIResponse("/produto");
+export const PedidoGen = () => {
+  let status = ""
+  const { data, isFetching, error } = APIResponse("/pedido");
+  const [errorS, setErrorS] = useState(null);
+  const [response, setResponse] = useState(null);
 
-  useEffect(() => {
-    setUrl(urlLink(location.pathname));
-  }, [location]);
+  const deletarCliente = (id) => {
+    axios
+      .delete(`https://kifel.herokuapp.com/pedido/${id}`)
+      .then((response) => {
+        setResponse(response.status);
+      })
+      .catch((error) => {
+        setErrorS(error);
+      })
+      .finally(() => {
+        refresh();
+      });
+  };
 
-  const urlLink = (url) => {
-    if (!url == "/produtos") {
-      return `/`;
-    }
-    return `/produtos`;
+  const refresh = () => {
+    window.location.reload();
   };
 
   const Loading = () => {
@@ -84,28 +88,24 @@ export const Produtos = () => {
     );
   };
 
-  const ShowProducts = () => {
-    const produtosFiltrados = data?.filter((produto) =>
-      produto.nome.toUpperCase().includes(ProdutoFiltrado.toUpperCase())
-    );
+  const ShowClients = () => {
     return (
       <>
-        {produtosFiltrados?.map((prod) => {
+        {data?.map((func) => {
+          if(func.pedidoStatus === "AGUARDANDO_PAGAMENTO") {
+            status = "PAG-PEN..."
+          }else {
+            status = func.pedidoStatus
+          }
           return (
-            <div className="col-md-3 mb-4" key={prod.id}>
+            <div className="col-md-12 mb-4 col-lg-12 col-xl-4" key={func.id}>
               <div className="card text-center card-item" width="18rem">
-                <ImagemProduto src={prod.fotoLink} alt={prod.nome} />
                 <div className="card-body">
+                  <p className="card-text lead">ID: {func.id}</p>
                   <h5 className="card-title text-dark mb-0">
-                    {prod.nome.substring(0, 12)}...
+                    Cliente: {func.nomeCliente.substring(0, 8)}...
                   </h5>
-                  <p className="card-text lead fw-bold">R${prod.valor}</p>
-                  <NavLink
-                    to={`${url}/${prod.id}`}
-                    className="btn btn-outline-primary"
-                  >
-                    Detalhes
-                  </NavLink>
+                  <p className="card-text lead">Status: {status}</p>
                 </div>
               </div>
             </div>
@@ -117,33 +117,29 @@ export const Produtos = () => {
 
   return (
     <>
-      <div className="container my-5 py-5">
-        <div className="row">
-          <div className="col-12 mb-5">
-            <h1 className="display-6 fw-bolder text-center">Produtos Disponíveis</h1>
-            <input
-              className="form-control mt-5"
-              value={ProdutoFiltrado}
-              onChange={(e) => setProdutoFiltrado(e.target.value)}
-              type="text"
-              placeholder="Digite o nome do produto"
-            />
+      <div className="container">
+        <div className="row justify-content-center mt-5">
+          <div className="container mb-5">
+            <div className="row">
+              <div className="col-6">
+                <NavLink to="/admin" className="text-body btn">
+                  <i className="fa fa-arrow-left me-2"></i>Voltar
+                </NavLink>
+              </div>
+            </div>
           </div>
-          <div className="row justify-content-center">
-            {(() => {
-              if (isFetching) {
-                return <Loading />;
-              }
-              if (error != null) {
-                return <NotFound err={error.message} />;
-              } else {
-                return <ShowProducts />;
-              }
-            })()}
-          </div>
+          {(() => {
+            if (isFetching) {
+              return <Loading />;
+            }
+            if (error != null) {
+              return <NotFound err={error.message} />;
+            } else {
+              return <ShowClients />;
+            }
+          })()}
         </div>
       </div>
-      <FooterPage />
     </>
   );
 };

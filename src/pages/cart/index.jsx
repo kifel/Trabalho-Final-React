@@ -1,10 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CartContext } from "../../context/cart";
-import './index.css';
+import "./index.css";
 
 export const Cart = () => {
+  const [cupom, setCupom] = useState("");
   let totalPrice = 0;
+  let desconto = 0;
+  let valorComDesconto = 0;
+
   const {
     productsCart,
     clearCart,
@@ -37,9 +41,16 @@ export const Cart = () => {
 
                       {productsCart?.map((prod) => {
                         const subTotal = prod.valor * prod.quantidade;
-                        totalPrice += subTotal
+                        totalPrice += subTotal;
+                        if (cupom.toUpperCase() === "BITI-20") {
+                          desconto = totalPrice * (20 / 100);
+                          valorComDesconto = totalPrice - desconto;
+                        }
                         return (
-                          <div className="row mb-4 d-flex justify-content-between align-items-center" key={prod.id}>
+                          <div
+                            className="row mb-4 d-flex justify-content-between align-items-center"
+                            key={prod.id}
+                          >
                             <div className="col-md-2 col-lg-2 col-xl-2">
                               <img
                                 src={prod.fotoLink}
@@ -119,8 +130,9 @@ export const Cart = () => {
 
                       <div className="d-flex justify-content-between mb-4">
                         <h5 className="text-uppercase">
-                          items {productsCart.length}
+                          itens {productsCart.length}
                         </h5>
+                        <p>R$ {totalPrice.toFixed(2)}</p>
                       </div>
 
                       <h5 className="text-uppercase mb-3">Cupom de desconto</h5>
@@ -131,10 +143,25 @@ export const Cart = () => {
                             type="text"
                             id="form3Examplea2"
                             className="form-control form-control-lg"
+                            value={cupom}
+                            onChange={(e) => setCupom(e.target.value)}
                           />
-                          <label className="form-label" htmlFor="form3Examplea2">
-                            Enter your code
+                          <label
+                            className="form-label"
+                            htmlFor="form3Examplea2"
+                          >
+                            Digite o seu código
                           </label>
+                          {(() => {
+                            if (cupom.toUpperCase() === "BITI-20") {
+                              return (
+                                <div class="alert alert-info" role="alert">
+                                  CUPOM "BITI-20" APLICADO COM SUCESSO, VOCÊ
+                                  ECONOMIZOU R$ {desconto.toFixed(2)}.
+                                </div>
+                              );
+                            }
+                          })()}
                         </div>
                       </div>
 
@@ -142,7 +169,13 @@ export const Cart = () => {
 
                       <div className="d-flex justify-content-between mb-5">
                         <h5 className="text-uppercase">Preço total</h5>
-                        <h5>R$ {totalPrice.toFixed(2)}</h5>
+                        {(() => {
+                          if (cupom.toUpperCase() === "BITI-20") {
+                            return <h5>R$ {valorComDesconto.toFixed(2)}</h5>;
+                          } else {
+                            return <h5>R$ {totalPrice.toFixed(2)}</h5>;
+                          }
+                        })()}
                       </div>
 
                       <button
