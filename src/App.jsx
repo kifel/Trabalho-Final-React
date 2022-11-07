@@ -15,6 +15,9 @@ import { ClienteEditar } from "./pages/painelAdmin/cliente/editar";
 import { Funcionarios } from "./pages/painelAdmin/funcionarios";
 import { FuncionariosEditar } from "./pages/painelAdmin/funcionarios/editar";
 import { FuncionariosInserir } from "./pages/painelAdmin/funcionarios/inserir";
+import { ProdutoGen } from "./pages/painelAdmin/produto";
+import { ProdutoGenEditar } from "./pages/painelAdmin/produto/editar";
+import { ProdutoGenInserir } from "./pages/painelAdmin/produto/inserir";
 import { Produto } from "./pages/produto";
 import { Produtos } from "./pages/produtos";
 import { Register } from "./pages/register";
@@ -40,6 +43,9 @@ function App() {
         <Route path="/categoria-gen" element={<Categoria />} exact={true} />
         <Route path="/categoria-gen/cadastrar" element={<CategoriaInserir />} exact={true} />
         <Route path="/categoria-gen/editar/:id" element={<CategoriaEditar />} exact={true} />
+        <Route path="/produtos-gen" element={<ProdutoGen />} exact={true} />
+        <Route path="/produtos-gen/cadastrar" element={<ProdutoGenInserir />} exact={true} />
+        <Route path="/produtos-gen/editar/:id" element={<ProdutoGenEditar />} exact={true} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
