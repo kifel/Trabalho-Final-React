@@ -1,14 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { ClienteAPI } from "../../../hooks/clienteAPI";
+import { APIResponse } from "../../../hooks/APIResponse";
 
 export const ClienteEditar = () => {
   const { id } = useParams();
-  const { clientes } = ClienteAPI(`/${id}`);
+  const { data } = APIResponse(`/cliente/${id}`);
   const [errorS, setErrorS] = useState(null);
   const [apiResponse, setApiResponse] = useState(undefined);
-  const [dataNascimento, setDataNascimento] = useState("");
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
   const [usuario, setUsuario] = useState("");
@@ -25,8 +24,8 @@ export const ClienteEditar = () => {
 
     axios
       .put(`https://kifel.herokuapp.com/cliente/${id}`, {
-        cpf: clientes.cpf,
-        dataNascimento: `${clientes.dataNascimento}T18:46:19Z`,
+        cpf: data.cpf,
+        dataNascimento: `${data.dataNascimento}T18:46:19Z`,
         email: email,
         endereco: {
           cep: cep,
@@ -41,11 +40,9 @@ export const ClienteEditar = () => {
         usuario: usuario,
       })
       .then((response) => {
-        console.log(response);
         setApiResponse(response);
       })
       .catch((error) => {
-        console.log(error);
         setErrorS(error);
       });
 
@@ -72,7 +69,7 @@ export const ClienteEditar = () => {
                     type="text"
                     id="form3Example1q"
                     className="form-control"
-                    placeholder={clientes.nome}
+                    placeholder={data.nome}
                     value={nome}
                     minLength="5"
                     maxLength="60"
@@ -91,7 +88,7 @@ export const ClienteEditar = () => {
                     minLength="6"
                     maxLength="15"
                     required
-                    placeholder={clientes.usuario}
+                    placeholder={data.usuario}
                     id="form3Example1q"
                     className="form-control mb-4"
                     value={usuario}
@@ -110,7 +107,7 @@ export const ClienteEditar = () => {
                     id="exampleDatepicker1"
                     minLength="4"
                     maxLength="30"
-                    placeholder={clientes.email}
+                    placeholder={data.email}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -137,7 +134,7 @@ export const ClienteEditar = () => {
                         required
                         minLength="8"
                         maxLength="8"
-                        placeholder={clientes.endereco?.cep}
+                        placeholder={data.endereco?.cep}
                       />
                     </div>
                   </div>
@@ -159,7 +156,7 @@ export const ClienteEditar = () => {
                         required
                         minLength="6"
                         maxLength="40"
-                        placeholder={clientes.endereco?.bairro}
+                        placeholder={data.endereco?.bairro}
                       />
                     </div>
                   </div>
@@ -181,7 +178,7 @@ export const ClienteEditar = () => {
                         required
                         minLength="6"
                         maxLength="40"
-                        placeholder={clientes.endereco?.cidade}
+                        placeholder={data.endereco?.cidade}
                       />
                     </div>
                   </div>
@@ -203,7 +200,7 @@ export const ClienteEditar = () => {
                         required
                         minLength="2"
                         maxLength="2"
-                        placeholder={clientes.endereco?.estado}
+                        placeholder={data.endereco?.estado}
                       />
                     </div>
                   </div>
@@ -225,7 +222,7 @@ export const ClienteEditar = () => {
                         required
                         minLength="4"
                         maxLength="40"
-                        placeholder={clientes.endereco?.rua}
+                        placeholder={data.endereco?.rua}
                       />
                     </div>
                   </div>
@@ -247,7 +244,7 @@ export const ClienteEditar = () => {
                         required
                         minLength="1"
                         maxLength="20"
-                        placeholder={clientes.endereco?.numero}
+                        placeholder={data.endereco?.numero}
                       />
                     </div>
                   </div>
@@ -261,7 +258,7 @@ export const ClienteEditar = () => {
                       className="form-control"
                       value={complemento}
                       onChange={(e) => setComplemento(e.target.value)}
-                      placeholder={clientes.endereco?.complemento}
+                      placeholder={data.endereco?.complemento}
                     />
                   </div>
                 </div>

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import "./index.css";
 import { Image, Section } from "./styles";
 
@@ -61,8 +62,6 @@ export const Register = () => {
         setErrorS(null);
       }
     }
-    console.log(errorS);
-    console.log(apiResponse);
   }, [attempt]);
 
   return (
@@ -344,6 +343,11 @@ export const Register = () => {
                     );
                   }
                 })()}
+                <div className="mt-4">
+                  <NavLink to="/login" className="text-body">
+                    <i className="fa fa-arrow-left me-2 mb-5"></i>Voltar
+                  </NavLink>
+                </div>
               </div>
             </div>
           </div>

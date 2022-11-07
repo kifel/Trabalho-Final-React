@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
 import { FooterPage } from "../../components/footer";
 import { CartContext } from "../../context/cart";
-import { ProdutoAPI } from "../../hooks/produtoAPI";
+import { APIResponse } from "../../hooks/APIResponse";
 import { NotFound } from "../notFound";
 import "./index.css";
 import { ProdutoImg } from "./styles";
@@ -13,7 +13,7 @@ export const Produto = () => {
   const { handleAddItemToCart } = useContext(CartContext);
 
   const { id } = useParams();
-  const { produtos, isFetching, error } = ProdutoAPI(`/${id}`);
+  const { data, isFetching, error } = APIResponse(`/produto/${id}`);
 
   const Loading = () => {
     return (
@@ -47,28 +47,28 @@ export const Produto = () => {
         <div className="col-md-6 content">
           <ProdutoImg
             className="img-fluid"
-            src={produtos.fotoLink}
-            alt={produtos.nome}
+            src={data.fotoLink}
+            alt={data.nome}
           />
         </div>
         <div className="col-md-6">
           <h4 className="text-uppercase text-black-50">
-            {produtos.nomeCategoria}
+            {data.nomeCategoria}
           </h4>
-          <h1 className="display-5 fw-bolder">{produtos.nome}</h1>
+          <h1 className="display-5 fw-bolder">{data.nome}</h1>
           <p className="lead">
             Classificação: 5.0 <i className="fa fa-star"></i>
           </p>
-          <h3 className="display-6 fw-bold my-4">R$ {produtos.valor}</h3>
-          <p className="lead">{produtos.descricao}</p>
+          <h3 className="display-6 fw-bold my-4">R$ {data.valor}</h3>
+          <p className="lead">{data.descricao}</p>
           <button
             className="btn btn-outline-primary px-4 py-2"
             onClick={() =>
               handleAddItemToCart(
-                produtos.id,
-                produtos.fotoLink,
-                produtos.nome,
-                produtos.valor
+                data.id,
+                data.fotoLink,
+                data.nome,
+                data.valor
               )
             }
           >
