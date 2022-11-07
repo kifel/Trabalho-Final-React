@@ -5,7 +5,9 @@ import { Produtos } from "../produtos";
 import { Imagem } from "./styles";
 
 export const Home = () => {
+  
   return (
+    
     <div className="hero">
       <div className="card text-bg-dark border-0">
         <Imagem src={img} alt="Background" />

@@ -22,6 +22,7 @@ import { ProdutoGenInserir } from "./pages/painelAdmin/produto/inserir";
 import { Produto } from "./pages/produto";
 import { Produtos } from "./pages/produtos";
 import { Register } from "./pages/register";
+import { Sobre } from "./pages/sobre";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/produtos-gen/cadastrar" element={<ProdutoGenInserir />} exact={true} />
         <Route path="/produtos-gen/editar/:id" element={<ProdutoGenEditar />} exact={true} />
         <Route path="/pedidos-gen" element={<PedidoGen />} exact={true} />
+        <Route path="/sobre" element={<Sobre />} exact={true}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -1,0 +1,24 @@
+.container .article .githubavatar{
+    float: left;
+    width: 150px;
+    margin-left: 20px;
+    border-radius: 50%;
+    
+    
+}
+p{
+    margin-top: 15px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.container .article .githublink{
+    border: 5px solid rgba(255, 255, 255, 0);
+   width: 60px;
+    margin-left:20px;
+    text-align:right;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-top: 20px;
+    
+}

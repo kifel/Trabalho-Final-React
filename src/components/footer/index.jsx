@@ -88,9 +88,10 @@ export const FooterPage = () => {
             optio pariatur est quia magnam eum harum corrupti dicta, aliquam
             sequi voluptate quas.
           </p>
+          
         </section>
       </div>
-
+      
       <div
         className="text-center p-3"
       >
