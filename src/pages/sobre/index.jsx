@@ -23,7 +23,7 @@ export const Sobre =()=> {
             </article>
             <article class="article">
 
-<img class="githubavatar" src="https://avatars.githubusercontent.com/u/112448816?s=400&u=5e44fbe553928848a7c0157afe78f7b9427988e5&v=4"
+    <img class="githubavatar" src="https://avatars.githubusercontent.com/u/112448816?s=400&u=5e44fbe553928848a7c0157afe78f7b9427988e5&v=4"
             alt="imagem do github"></img>
         <p>Gabriel Cavalcante Brandão</p>
         <p>32 anos.</p>
@@ -35,49 +35,50 @@ export const Sobre =()=> {
             <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
         </a>
         </article>
-        {/* <article class="article">
+        <article class="article">
 
-<img class="githubavatar" src="https://avatars.githubusercontent.com/u/112448816?s=400&u=5e44fbe553928848a7c0157afe78f7b9427988e5&v=4"
+    <img class="githubavatar" src="https://avatars.githubusercontent.com/u/105392455?v=4"
             alt="imagem do github"></img>
-        <p>Gabriel Cavalcante Brandão</p>
-        <p>32 anos.</p>
-        <p>Engenheiro de produção e studante do SerraTec 2022.2</p>
-        <a href="https://github.com/GabrielCBrandao" target="_blank">
+        <p> Moacyr Kennedy Camacho 
+            </p>
+        <p> 28 Anos.</p>
+        <p> Estudante de Engenharia de Software . Residência em TIC | Serratec.</p>
+        <a href="https://github.com/MoacyrKennedy" target="_blank">
             <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
         </a>
-        <a href="https://github.com/GabrielCBrandao" target="_blank">
+        <a href="https://www.linkedin.com/in/moacyrkennedy/" target="_blank">
             <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
         </a>
         </article>
         <article class="article">
 
-<img class="githubavatar" src="https://avatars.githubusercontent.com/u/112448816?s=400&u=5e44fbe553928848a7c0157afe78f7b9427988e5&v=4"
+    <img class="githubavatar" src="https://avatars.githubusercontent.com/u/110864780?v=4"
             alt="imagem do github"></img>
-        <p>Gabriel Cavalcante Brandão</p>
-        <p>32 anos.</p>
-        <p>Engenheiro de produção e studante do SerraTec 2022.2</p>
-        <a href="https://github.com/GabrielCBrandao" target="_blank">
+        <p> Brenda Folly Toledo</p>
+        <p> 29 Anos.</p>
+        <p> Graduada em Administração de empresas pela UNESA e estudante do SerraTec 2022.2</p>
+        <a href="https://github.com/bft1993" target="_blank">
             <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
         </a>
-        <a href="https://github.com/GabrielCBrandao" target="_blank">
+        <a href="https://www.linkedin.com/in/brenda-folly-toledo-6070ba92/" target="_blank">
             <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
         </a>
         </article>
         <article class="article">
 
-<img class="githubavatar" src="https://avatars.githubusercontent.com/u/112448816?s=400&u=5e44fbe553928848a7c0157afe78f7b9427988e5&v=4"
+    <img class="githubavatar" src="https://avatars.githubusercontent.com/u/109103851?v=4"
             alt="imagem do github"></img>
-        <p>Gabriel Cavalcante Brandão</p>
-        <p>  32 anos.</p>
-        <p>Engenheiro de produção e studante do SerraTec 2022.2</p>
-        <a href="https://github.com/GabrielCBrandao" target="_blank">
+        <p> Rafaela Rezende Ventura</p>
+        <p> 28 anos.</p>
+        <p> Nutricionista e estudante do SerraTec 2022.2 </p>
+        <a href="https://github.com/Rafaelarventura" target="_blank">
             <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
         </a>
-        <a href="https://github.com/GabrielCBrandao" target="_blank">
+        <a href="https://www.linkedin.com/in/rafaela-ventura-8b4763123/" target="_blank">
             <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
         </a>
         </article>
-         */}
+        
             
             
             
