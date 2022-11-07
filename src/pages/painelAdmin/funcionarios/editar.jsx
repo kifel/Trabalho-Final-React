@@ -16,7 +16,7 @@ export const FuncionariosEditar = () => {
     axios
       .put(`https://kifel.herokuapp.com/funcionario/${id}`, {
         cpf: data.cpf,
-        nome: nome,
+        nome: nome
       })
       .then((response) => {
         setApiResponse(response);
@@ -25,7 +25,6 @@ export const FuncionariosEditar = () => {
         setErrorS(error);
       });
 
-    setAttempt(attempt + 1);
   };
 
   return (
@@ -49,7 +48,7 @@ export const FuncionariosEditar = () => {
                     type="text"
                     id="form3Example1q"
                     className="form-control"
-                    placeholder={funcionario.nome}
+                    placeholder={data.nome}
                     value={nome}
                     minLength="5"
                     maxLength="60"
