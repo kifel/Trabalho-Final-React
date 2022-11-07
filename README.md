@@ -51,6 +51,6 @@ Gostaria de acessar e testar a aplicação ? basta clicar [aqui](https://top-sec
 ## 🎁 Expressões de gratidão
 
 * Conte a outras pessoas sobre este projeto 📢
-* Obrigado por ver esse projeto  ❤️
+* Obrigado por ver esse projeto ❤️
 
 --- 
