@@ -18,7 +18,9 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
 }
- 
+ p{
+  text-align: center;
+ }
 input[type=submit]:hover {
   background-color: #45a049;
 }
