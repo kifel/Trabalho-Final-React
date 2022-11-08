@@ -1,6 +1,8 @@
 import React from "react";
-import "./index1.css";
 import { FooterPage } from "../../components/footer";
+import github from "./img/github.png";
+import linkedin from './img/linkedin.png';
+import "./index1.css";
 export const Sobre =()=> {
     return(
         <>
@@ -15,10 +17,10 @@ export const Sobre =()=> {
             <p>21 anos.</p>
             <p>Estudante de Engenharia elétrica e do SerraTec 2022.2</p>
             <a href="https://github.com/kifel" target="_blank">
-                <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
+                <img class="githublink" src={github} alt="imagem do github"></img>
             </a>
             <a href="https://www.linkedin.com/in/kifel/?originalSubdomain=br" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
+            <img class="githublink" src={linkedin} alt="imagem do linkedin"></img>
         </a>
             </article>
             <article class="article">
@@ -29,10 +31,10 @@ export const Sobre =()=> {
         <p>32 anos.</p>
         <p>Engenheiro de produção e estudante do SerraTec 2022.2</p>
         <a href="https://github.com/GabrielCBrandao" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
+            <img class="githublink" src={github} alt="imagem do github"></img>
         </a>
         <a href="https://www.linkedin.com/in/gabriel-brand%C3%A3o-427b47235/" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
+            <img class="githublink" src={linkedin} alt="imagem do linkedin"></img>
         </a>
         </article>
         <article class="article">
@@ -44,10 +46,10 @@ export const Sobre =()=> {
         <p> 28 Anos.</p>
         <p> Estudante de Engenharia de Software . Residência em TIC | Serratec.</p>
         <a href="https://github.com/MoacyrKennedy" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
+            <img class="githublink" src={github} alt="imagem do github"></img>
         </a>
         <a href="https://www.linkedin.com/in/moacyrkennedy/" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
+            <img class="githublink" src={linkedin} alt="imagem do linkedin"></img>
         </a>
         </article>
         <article class="article">
@@ -58,10 +60,10 @@ export const Sobre =()=> {
         <p> 29 Anos.</p>
         <p> Graduada em Administração de empresas pela UNESA e estudante do SerraTec 2022.2</p>
         <a href="https://github.com/bft1993" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
+            <img class="githublink" src={github} alt="imagem do github"></img>
         </a>
         <a href="https://www.linkedin.com/in/brenda-folly-toledo-6070ba92/" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
+            <img class="githublink" src={linkedin} alt="imagem do linkedin"></img>
         </a>
         </article>
         <article class="article">
@@ -72,10 +74,10 @@ export const Sobre =()=> {
         <p> 28 anos.</p>
         <p> Nutricionista e estudante do SerraTec 2022.2 </p>
         <a href="https://github.com/Rafaelarventura" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\github.png" alt="imagem do github"></img>
+            <img class="githublink" src={github} alt="imagem do github"></img>
         </a>
         <a href="https://www.linkedin.com/in/rafaela-ventura-8b4763123/" target="_blank">
-            <img class="githublink" src="src\pages\sobre\img\linkedin.png" alt="imagem do linkedin"></img>
+            <img class="githublink" src={linkedin} alt="imagem do linkedin"></img>
         </a>
         </article>
         
