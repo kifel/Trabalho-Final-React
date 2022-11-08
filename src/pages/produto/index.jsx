@@ -95,12 +95,24 @@ export const Produto = () => {
               }
             })()}
             <Popup trigger={popup} setTrigger={setPopup}>
-              <h3><i className="fa fa-shopping-cart me-2"></i>Carrinho</h3>
+              <h3>
+                <i className="fa fa-shopping-cart me-2"></i>Carrinho
+              </h3>
               <p>Produto adicionado no carrinho</p>
             </Popup>
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
       <br />
       <br />
