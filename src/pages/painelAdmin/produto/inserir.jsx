@@ -3,7 +3,9 @@ import React from "react";
 export const ProdutoGenInserir = () => {
   return (
     <>
-      <p>Olá</p>
+      <div className="container align-item-center justify-content-center mt-5">
+          <p className="text-danger">MANUTENÇÃO :(</p>
+      </div>
     </>
   );
 };
