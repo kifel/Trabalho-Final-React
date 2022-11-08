@@ -295,8 +295,8 @@ export const Register = () => {
                           value={numero}
                           onChange={(e) => setNumero(e.target.value)}
                           required
-                          minLength="1"
-                          maxLength="20"
+                          min="1"
+                          max="2000000"
                         />
                       </div>
                     </div>

@@ -93,8 +93,8 @@ export const ProdutoGenEditar = () => {
                     className="form-control"
                     placeholder={data.qtdEstoque}
                     value={estoque}
-                    minLength="1"
-                    maxLength="20"
+                    min="1"
+                    max="2000"
                     required
                     onChange={(e) => setEstoque(e.target.value)}
                   />
@@ -110,8 +110,8 @@ export const ProdutoGenEditar = () => {
                     className="form-control"
                     placeholder={data.valor}
                     value={valor}
-                    minLength="1"
-                    maxLength="10"
+                    min="1"
+                    max="100000"
                     required
                     onChange={(e) => setValor(e.target.value)}
                   />
