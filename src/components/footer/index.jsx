@@ -97,7 +97,7 @@ export const FooterPage = () => {
       >
         © 2020 Copyright:
         <a className="text-white" href="https://mdbootstrap.com/">
-          MDBootstrap.com
+          kifelG
         </a>
       </div>
     </footer>
