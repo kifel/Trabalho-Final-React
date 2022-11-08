@@ -83,10 +83,7 @@ export const FooterPage = () => {
 
         <section className="mb-4">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam, commodi
-            optio pariatur est quia magnam eum harum corrupti dicta, aliquam
-            sequi voluptate quas.
+          Projeto final da matéria de Desenvolvimento Web desenvolvido pelo Grupo 6.
           </p>
           
         </section>
@@ -95,9 +92,9 @@ export const FooterPage = () => {
       <div
         className="text-center p-3"
       >
-        © 2020 Copyright:
+        © 2022 Copyright:
         <a className="text-white" href="https://mdbootstrap.com/">
-          kifelG
+          Grupo6
         </a>
       </div>
     </footer>
