@@ -157,7 +157,7 @@ export const Cart = () => {
                               return (
                                 <div class="alert alert-info" role="alert">
                                   CUPOM "BITI-20" APLICADO COM SUCESSO, VOCÊ
-                                  ECONOMIZOU R$ {desconto.toFixed(2)}.
+                                  ECONOMIZOU R$ {desconto.toFixed(2)}
                                 </div>
                               );
                             }
@@ -180,7 +180,7 @@ export const Cart = () => {
 
                       <button
                         type="button"
-                        className="btn btn-dark btn-block btn-lg"
+                        className="btn btn-dark btn-block btn-lg mt-2"
                         data-mdb-ripple-color="dark"
                         onClick={clearCart}
                       >
@@ -189,7 +189,7 @@ export const Cart = () => {
 
                       <button
                         type="button"
-                        className="btn btn-dark btn-block btn-lg ms-2"
+                        className="btn btn-dark btn-block mt-2 btn-lg ms-2"
                         data-mdb-ripple-color="dark"
                       >
                         Comprar

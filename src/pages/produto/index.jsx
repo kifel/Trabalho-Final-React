@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import ContentLoader from "react-content-loader";
 import { useParams } from "react-router";
 import { NavLink } from "react-router-dom";
@@ -7,13 +7,19 @@ import { CartContext } from "../../context/cart";
 import { APIResponse } from "../../hooks/APIResponse";
 import { NotFound } from "../notFound";
 import "./index.css";
+import { Popup } from "./popup";
 import { ProdutoImg } from "./styles";
 
 export const Produto = () => {
   const { handleAddItemToCart } = useContext(CartContext);
-
   const { id } = useParams();
   const { data, isFetching, error } = APIResponse(`/produto/${id}`);
+  const [popup, setPopup] = useState(false);
+
+  const inserir = () => {
+    handleAddItemToCart(data.id, data.fotoLink, data.nome, data.valor);
+    setPopup(true);
+  };
 
   const Loading = () => {
     return (
@@ -52,9 +58,7 @@ export const Produto = () => {
           />
         </div>
         <div className="col-md-6">
-          <h4 className="text-uppercase text-black-50">
-            {data.nomeCategoria}
-          </h4>
+          <h4 className="text-uppercase text-black-50">{data.nomeCategoria}</h4>
           <h1 className="display-5 fw-bolder">{data.nome}</h1>
           <p className="lead">
             Classificação: 5.0 <i className="fa fa-star"></i>
@@ -62,19 +66,12 @@ export const Produto = () => {
           <h3 className="display-6 fw-bold my-4">R$ {data.valor}</h3>
           <p className="lead">{data.descricao}</p>
           <button
-            className="btn btn-outline-primary px-4 py-2"
-            onClick={() =>
-              handleAddItemToCart(
-                data.id,
-                data.fotoLink,
-                data.nome,
-                data.valor
-              )
-            }
+            className="btn btn-outline-primary mt-2 px-4 py-2"
+            onClick={() => inserir()}
           >
             Adicionar no carrinho
           </button>
-          <NavLink to="/cart" className="btn ms-2 px-3 py-2 color-cart">
+          <NavLink to="/cart" className="btn ms-2 px-3 py-2 mt-2 color-cart">
             Ir para o carrinho
           </NavLink>
         </div>
@@ -97,9 +94,18 @@ export const Produto = () => {
                 return <ShowProduct />;
               }
             })()}
+            <Popup trigger={popup} setTrigger={setPopup}>
+              <h3><i className="fa fa-shopping-cart me-2"></i>Carrinho</h3>
+              <p>Produto adicionado no carrinho</p>
+            </Popup>
           </div>
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <FooterPage />
     </>
   );
